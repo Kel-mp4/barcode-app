@@ -58,10 +58,11 @@ camera.addEventListener("click", () => {
   Instascan.Camera.getCameras()
     .then(cameras => {
       if(cameras.length > 0){
-        scanner.start(cameras[1]).then(() => {
-          form.classList.add("active-video");
-          stopCam.style.display = "inline-block";
-        })
+       let selectedCamera = cameras.find(cam => cam.name.toLowerCase().includes("back"));
+scanner.start(selectedCamera || cameras[0]).then(() => {
+  form.classList.add("active-video");
+  stopCam.style.display = "inline-block";
+})
       }else{
         console.log("No Cameras Found");
       }
