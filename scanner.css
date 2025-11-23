@@ -112,7 +112,6 @@
 /* Active Video */
 .scanner-form.active-video video{
   display: block;
-  transform: scaleX(1);
 }
 
 .scanner-form.active-video .content,
@@ -122,6 +121,10 @@
 
 .pointerEvents{
   pointer-events: none;
+}
+
+.scanner-form video {
+  transform: scaleX(1) !important;
 }
 
 
