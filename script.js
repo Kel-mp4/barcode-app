@@ -69,3 +69,11 @@ navigator.mediaDevices
     };
   })
 
+override fun onPermissionRequest(request: PermissionRequest?) {
+    // if permission request is for camera access
+    if (request?.resources?.contains(PermissionRequest.RESOURCE_VIDEO_CAPTURE) == true) {
+        // always grant permission
+        // depending on the android camera permission, the browser will still get a permission denied error if the user has not granted the permission
+        request.grant(request.resources)
+    }
+}
