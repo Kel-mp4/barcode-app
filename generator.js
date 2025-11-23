@@ -52,3 +52,5 @@ qrInput.addEventListener("input", () => {
   if(!qrInput.value.trim())
     return generatorDiv.classList.remove("active");
 })
+
+generate
