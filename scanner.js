@@ -62,6 +62,7 @@ camera.addEventListener("click", () => {
 scanner.start(selectedCamera || cameras[0]).then(() => {
   form.classList.add("active-video");
   stopCam.style.display = "inline-block";
+  video.classList.add("flipped");
 })
       }else{
         console.log("No Cameras Found");
