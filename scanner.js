@@ -1,5 +1,4 @@
 const scannerDiv = document.querySelector(".scanner");
-
 const camera = scannerDiv.querySelector("h1 .fa-camera");
 const stopCam = scannerDiv.querySelector("h1 .fa-circle-stop");
 
@@ -99,3 +98,5 @@ function stopScan(){
 
   if(scanner) scanner.stop();
 }
+
+scan 
