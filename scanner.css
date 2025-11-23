@@ -123,6 +123,8 @@
   pointer-events: none;
 }
 
-.scanner-form video.flipped {
+/* Fix mirrored / inverted camera */
+.scanner-form.active-video video {
   transform: scaleX(-1);
 }
+
