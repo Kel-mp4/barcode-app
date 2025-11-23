@@ -19,7 +19,7 @@ generateBtn.addEventListener("click", () => {
   qrImg.addEventListener("load", () => {
     generatorDiv.classList.add("active");
     generateBtn.innerText = "Generate QR Code";
-    addToInventory(qrText);
+  
 
   })
 })
