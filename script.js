@@ -10,19 +10,31 @@ function generateBarcode() {
 
 // Scan barcode
 function startScanner() {
-  const html5QrCode = new Html5Qrcode("scanner");
+    const scannerDivId = "scanner";
+    const html5QrCode = new Html5Qrcode(scannerDivId);
 
-  html5QrCode.start(
-    { facingMode: "environment" },
-    { fps: 10, qrbox: 250 },
-    (decodedText, decodedResult) => {
-      document.getElementById('scanResult').innerText = "Scanned: " + decodedText;
-      html5QrCode.stop(); // stop after first scan
-    },
-    (errorMessage) => {
-      console.log("Scan error: ", errorMessage);
-    }
-  ).catch(err => {
-    alert("Camera access denied or not supported: " + err);
-  });
+    Html5Qrcode.getCameras().then(cameras => {
+        if (cameras && cameras.length) {
+            const cameraId = cameras[0].id; // use first available camera
+            html5QrCode.start(
+                cameraId,
+                { fps: 10, qrbox: 250 },
+                (decodedText, decodedResult) => {
+                    document.getElementById('scanResult').innerText = "Scanned: " + decodedText;
+                    addToInventory(decodedText);
+                    html5QrCode.stop();
+                },
+                (errorMessage) => {
+                    console.log("Scan error:", errorMessage);
+                }
+            ).catch(err => {
+                alert("Failed to start camera: " + err);
+            });
+        } else {
+            alert("No cameras found on this device.");
+        }
+    }).catch(err => {
+        alert("Camera permission denied or not supported: " + err);
+    });
 }
+
