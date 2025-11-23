@@ -12,18 +12,23 @@
     <h2>Generate Barcode</h2>
     <input type="text" id="barcodeText" placeholder="Enter product name">
     <button onclick="generateBarcode()">Generate</button>
+    <br><br>
     <svg id="barcode"></svg>
   </div>
 
   <div>
     <h2>Scan Barcode</h2>
-    <video id="scanner" width="300" height="200"></video>
+    <div id="scanner" style="width: 300px; height: 300px;"></div>
     <p id="scanResult"></p>
     <button onclick="startScanner()">Start Scanner</button>
   </div>
 
+  <!-- Barcode generator library -->
   <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+
+  <!-- Barcode scanner library -->
   <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
+
   <script src="script.js"></script>
 </body>
 </html>
