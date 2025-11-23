@@ -53,4 +53,32 @@ qrInput.addEventListener("input", () => {
     return generatorDiv.classList.remove("active");
 })
 
-generate
+
+
+
+
+function addToInventory(qrValue) {
+  let itemName = prompt("Enter item name:");
+  if (!itemName) return;
+
+  let quantity = prompt("Enter quantity:");
+  if (!quantity || isNaN(quantity)) {
+    alert("Invalid quantity");
+    return;
+  }
+
+  let inventory = JSON.parse(localStorage.getItem("inventory")) || [];
+
+  inventory.push({
+    item: itemName,
+    qr: qrValue,
+    qty: Number(quantity),
+  });
+
+  localStorage.setItem("inventory", JSON.stringify(inventory));
+
+  loadInventory();
+}
+
+addToInventory(text); // text = your QR value
+
