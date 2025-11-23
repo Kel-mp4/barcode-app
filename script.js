@@ -54,26 +54,3 @@ document.getElementById("startScan").addEventListener("click", () => {
   });
 });
 
-
-const constraints = {
-  audio: false,
-  video: true,
-};
-navigator.mediaDevices
-  .getUserMedia(constraints)
-  .then((mediaStream) => {
-    const video = document.querySelector("video");
-    video.srcObject = mediaStream;
-    video.onloadedmetadata = () => {
-      video.play();
-    };
-  })
-
-override fun onPermissionRequest(request: PermissionRequest?) {
-    // if permission request is for camera access
-    if (request?.resources?.contains(PermissionRequest.RESOURCE_VIDEO_CAPTURE) == true) {
-        // always grant permission
-        // depending on the android camera permission, the browser will still get a permission denied error if the user has not granted the permission
-        request.grant(request.resources)
-    }
-}
