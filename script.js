@@ -53,3 +53,19 @@ document.getElementById("startScan").addEventListener("click", () => {
     alert("Camera access denied: " + err);
   });
 });
+
+
+const constraints = {
+  audio: false,
+  video: true,
+};
+navigator.mediaDevices
+  .getUserMedia(constraints)
+  .then((mediaStream) => {
+    const video = document.querySelector("video");
+    video.srcObject = mediaStream;
+    video.onloadedmetadata = () => {
+      video.play();
+    };
+  })
+
